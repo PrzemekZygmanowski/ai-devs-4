@@ -1,0 +1,37 @@
+---
+alwaysApply: true
+---
+---
+description:
+globs:
+alwaysApply: false
+---
+# Supabase Fastify Initialization
+
+This document provides a reproducible guide to create the necessary file structure for integrating Supabase with your Fastify project.
+
+## Prerequisites
+
+- Your project should use Fastify 5 and JavaScript or TypeScript.
+- Install the `@supabase/supabase-js` package.
+- Ensure that `/supabase/config.toml` exists.
+- Ensure that a file `/src/db/database.types.ts` exists and contains the correct type definitions for your database.
+- Ensure that environment variables for Supabase are configured.
+
+IMPORTANT: Check prerequisites before performing actions below. If they're not met, stop and ask the user for the fix.
+
+## File Structure and Setup
+
+### 1. Supabase Client Initialization
+
+Create the file `/src/db/supabase.client.ts` with the following content:
+
+```ts
+import { createClient } from '@supabase/supabase-js';
+
+import type { Database } from './database.types';
+
+const supabaseUrl = process.env.SUPABASE_URL as string;
+const supabaseAnonKey = process.env.SUPABASE_KEY as string;
+
+export const supabaseClient = createClient<Database>(supabaseUrl, supabaseAnonKey);

@@ -1,0 +1,99 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
+# AI Rules for {app-name}
+
+{project-description}
+
+## Tech Stack
+
+- Fastify 5.x
+- Node.js
+- JavaScript or TypeScript
+- Supabase
+
+## Project Structure
+
+When introducing changes to the project, always follow the directory structure below:
+
+- `./src` - application source code
+- `./src/app.js` - main Fastify app instance
+- `./src/server.js` - application entry point
+- `./src/plugins` - Fastify plugins
+- `./src/config` - application configuration
+- `./src/common` - shared utilities and helpers
+- `./src/db` - database layer, Supabase client, shared queries, repositories, and types
+- `./src/tasks` - all course tasks, organized into separate numbered directories
+- `./src/types` - shared application types
+- `./src/tests` - tests
+- `./assets` - files used in tasks, such as text, images, audio, and video
+
+## Task Directory Convention
+
+Each task from `1` to `25` must have its own directory inside `./src/tasks`.
+
+Each task directory must contain:
+
+- `index.js` - main entry file for the task
+
+Additional directories such as `services`, `routes`, `controllers`, `repositories`, `schemas`, `utils`, or `lib` should be added only when needed.
+
+Example:
+
+```text
+src/
+  app.js
+  server.js
+  plugins/
+  config/
+  common/
+  db/
+  tasks/
+    1/
+      index.js
+      services/
+      routes/
+    2/
+      index.js
+    ...
+    25/
+      index.js
+  types/
+  tests/
+
+assets/
+  text/
+  images/
+  audio/
+  video/
+
+When modifying the directory structure, always update this section.
+
+## Coding practices
+
+### Guidelines for clean code
+
+- Use feedback from linters to improve the code when making changes.
+- Prioritize error handling and edge cases.
+- Handle errors and edge cases at the beginning of functions.
+- Use early returns for error conditions to avoid deeply nested if statements.
+- Place the happy path last in the function for improved readability.
+- Avoid unnecessary else statements; use if-return pattern instead.
+- Use guard clauses to handle preconditions and invalid states early.
+- Implement proper error logging and user-friendly error messages.
+- Consider using custom error types or error factories for consistent error handling.
+
+### Guidelines for SUPPORT_LEVEL
+
+#### SUPPORT_EXPERT
+
+- Favor elegant, maintainable solutions over verbose code. Assume understanding of language idioms and design patterns.
+- Highlight potential performance implications and optimization opportunities in suggested code.
+- Frame solutions within broader architectural contexts and suggest design alternatives when appropriate.
+- Focus comments on 'why' not 'what' - assume code readability through well-named functions and variables.
+- Proactively address edge cases, race conditions, and security considerations without being prompted.
+- When debugging, provide targeted diagnostic approaches rather than shotgun solutions.
+- Suggest comprehensive testing strategies rather than just example tests, including considerations for mocking, test organization, and coverage.
