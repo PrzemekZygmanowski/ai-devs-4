@@ -23,14 +23,14 @@ export const buildPersonKey = (person: {
   name: string;
   surname: string;
   born: number;
-  city: string;
+  birthPlace: string;
   job: string;
 }): string =>
   [
     normalizeComparisonText(person.name),
     normalizeComparisonText(person.surname),
     String(person.born),
-    normalizeComparisonText(person.city),
+    normalizeComparisonText(person.birthPlace),
     normalizeComparisonText(person.job),
   ].join("|");
 
@@ -58,11 +58,11 @@ export const normalizePersonRow = (row: PeopleCsvRow): NormalizedPerson | null =
   const name = row.name?.trim();
   const surname = row.surname?.trim();
   const gender = row.gender?.trim().toUpperCase();
-  const city = row.city?.trim();
+  const birthPlace = row.birthPlace?.trim();
   const job = row.job?.trim();
-  const born = Number.parseInt(row.born?.trim(), 10);
+  const born = Number.parseInt(row.birthDate?.trim(), 10);
 
-  if (!name || !surname || !gender || !city || !job || Number.isNaN(born)) {
+  if (!name || !surname || !gender || !birthPlace || !job || Number.isNaN(born)) {
     return null;
   }
 
@@ -71,10 +71,10 @@ export const normalizePersonRow = (row: PeopleCsvRow): NormalizedPerson | null =
     surname,
     gender,
     born,
-    city,
+    birthPlace,
     job,
-    personKey: buildPersonKey({ name, surname, born, city, job }),
-    cityComparisonKey: normalizeComparisonText(city),
+    personKey: buildPersonKey({ name, surname, born, birthPlace, job }),
+    birthPlaceComparisonKey: normalizeComparisonText(birthPlace),
     jobComparisonKey: normalizeComparisonText(job),
   };
 };
@@ -87,7 +87,7 @@ export const isEligibleBaseCandidate = (person: NormalizedPerson): boolean => {
     return false;
   }
 
-  if (person.cityComparisonKey !== TARGET_CITY) {
+  if (person.birthPlaceComparisonKey !== TARGET_CITY) {
     return false;
   }
 
@@ -107,6 +107,6 @@ export const toPeopleAnswer = (
   surname: person.surname,
   gender: person.gender,
   born: person.born,
-  city: person.city,
+  city: person.birthPlace,
   tags,
 });

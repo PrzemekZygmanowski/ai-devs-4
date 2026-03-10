@@ -1,0 +1,11 @@
+# Ignore build output
+dist/
+
+# Ignore Node.js dependencies
+node_modules/
+
+# Ignore lessons directories
+.lessons/
+
+# Ignore environment file
+.env

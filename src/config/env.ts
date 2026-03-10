@@ -26,12 +26,17 @@ const resolvePort = (): number => {
 
 const hubBaseUrl = process.env.HUB_BASE_URL?.trim() || "https://hub.ag3nts.org";
 const ag3ntsApiKey = requireEnv("AG3NTS_API_KEY");
+const supabaseUrl = process.env.SUPABASE_URL?.trim() || null;
+const supabaseKey = process.env.SUPABASE_KEY?.trim() || null;
 
 export const env = {
   port: resolvePort(),
   ag3ntsApiKey,
   openAiApiKey: requireEnv("OPENAI_API_KEY"),
   openAiModel: process.env.OPENAI_MODEL?.trim() || "gpt-4.1-mini",
+  supabaseUrl,
+  supabaseKey,
+  hasSupabaseConfig: Boolean(supabaseUrl && supabaseKey),
   hubBaseUrl,
   peopleCsvUrl: `${hubBaseUrl}/data/${ag3ntsApiKey}/people.csv`,
   verifyUrl: `${hubBaseUrl}/verify`,

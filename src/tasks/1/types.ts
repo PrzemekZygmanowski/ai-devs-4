@@ -14,8 +14,8 @@ export interface PeopleCsvRow {
   name: string;
   surname: string;
   gender: string;
-  born: string;
-  city: string;
+  birthDate: string;
+  birthPlace: string;
   job: string;
 }
 
@@ -24,10 +24,10 @@ export interface NormalizedPerson {
   surname: string;
   gender: string;
   born: number;
-  city: string;
+  birthPlace: string;
   job: string;
   personKey: string;
-  cityComparisonKey: string;
+  birthPlaceComparisonKey: string;
   jobComparisonKey: string;
 }
 
