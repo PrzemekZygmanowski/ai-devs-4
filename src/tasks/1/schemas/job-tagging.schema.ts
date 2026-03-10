@@ -21,7 +21,6 @@ export const jobTaggingStructuredOutputSchema = {
               type: "string",
               enum: [...PEOPLE_TAGS],
             },
-            uniqueItems: true,
           },
         },
       },
