@@ -3,6 +3,7 @@ import { env } from "./config/env.js";
 import openAiPlugin from "./plugins/openai.js";
 import supabasePlugin from "./plugins/supabase.js";
 import peopleTaskPlugin from "./tasks/1/index.js";
+import findhimTaskPlugin from "./tasks/2/index.js";
 
 const app = Fastify();
 
@@ -20,5 +21,6 @@ if (env.hasSupabaseConfig) {
 
 // Register task routes
 app.register(peopleTaskPlugin, { prefix: "/tasks/people" });
+app.register(findhimTaskPlugin, { prefix: "/tasks/findhim" });
 
 export default app;

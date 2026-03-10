@@ -39,5 +39,6 @@ export const env = {
   hasSupabaseConfig: Boolean(supabaseUrl && supabaseKey),
   hubBaseUrl,
   peopleCsvUrl: `${hubBaseUrl}/data/${ag3ntsApiKey}/people.csv`,
+  findhimLocationsUrl: `${hubBaseUrl}/data/${ag3ntsApiKey}/findhim_locations.json`,
   verifyUrl: `${hubBaseUrl}/verify`,
 } as const;
